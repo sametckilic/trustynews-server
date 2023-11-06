@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{358AB89E-2EB5-4349-9725-FB8BB1F4EF25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{B9A9D0C5-B7B4-42B2-92F3-3DD5582AD712}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{110AD4EF-3F17-4D7C-A2BB-D7711DE337FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{10E62119-CB35-492B-994F-F967E00FC2D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{5BA23771-D7D5-4F2A-8CD2-3B8DB0A3D316}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{3F876106-842F-415C-B917-965721A883AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrustyNews.Common", "src\Common\TrustyNews.Common\TrustyNews.Common.csproj", "{0877E40E-1A4A-4630-B1B4-8238E0054C44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.Core.Application", "src\Api\Core\TrustyNews.Api.Core.Application\TrustyNews.Api.Core.Application.csproj", "{DCB01E15-2080-472A-8828-F33C99E8762C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.Core.Domain", "src\Api\Core\TrustyNews.Api.Core.Domain\TrustyNews.Api.Core.Domain.csproj", "{66F82C2F-F24E-44D9-B672-1904796509F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.Infrastructure.Persistence", "src\Api\Infrastructure\TrustyNews.Api.Infrastructure.Persistence\TrustyNews.Api.Infrastructure.Persistence.csproj", "{AECE8FAA-C721-497F-924F-355A318BE811}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.WebApi", "src\Api\WebApi\TrustyNews.Api.WebApi\TrustyNews.Api.WebApi.csproj", "{79781C3A-0DA0-4669-B532-EBB4FB244B83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0877E40E-1A4A-4630-B1B4-8238E0054C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0877E40E-1A4A-4630-B1B4-8238E0054C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0877E40E-1A4A-4630-B1B4-8238E0054C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0877E40E-1A4A-4630-B1B4-8238E0054C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCB01E15-2080-472A-8828-F33C99E8762C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCB01E15-2080-472A-8828-F33C99E8762C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCB01E15-2080-472A-8828-F33C99E8762C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCB01E15-2080-472A-8828-F33C99E8762C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66F82C2F-F24E-44D9-B672-1904796509F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66F82C2F-F24E-44D9-B672-1904796509F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66F82C2F-F24E-44D9-B672-1904796509F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66F82C2F-F24E-44D9-B672-1904796509F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AECE8FAA-C721-497F-924F-355A318BE811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AECE8FAA-C721-497F-924F-355A318BE811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AECE8FAA-C721-497F-924F-355A318BE811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AECE8FAA-C721-497F-924F-355A318BE811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79781C3A-0DA0-4669-B532-EBB4FB244B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79781C3A-0DA0-4669-B532-EBB4FB244B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79781C3A-0DA0-4669-B532-EBB4FB244B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79781C3A-0DA0-4669-B532-EBB4FB244B83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9A9D0C5-B7B4-42B2-92F3-3DD5582AD712} = {358AB89E-2EB5-4349-9725-FB8BB1F4EF25}
+		{110AD4EF-3F17-4D7C-A2BB-D7711DE337FF} = {358AB89E-2EB5-4349-9725-FB8BB1F4EF25}
+		{10E62119-CB35-492B-994F-F967E00FC2D0} = {B9A9D0C5-B7B4-42B2-92F3-3DD5582AD712}
+		{5BA23771-D7D5-4F2A-8CD2-3B8DB0A3D316} = {B9A9D0C5-B7B4-42B2-92F3-3DD5582AD712}
+		{3F876106-842F-415C-B917-965721A883AB} = {B9A9D0C5-B7B4-42B2-92F3-3DD5582AD712}
+		{0877E40E-1A4A-4630-B1B4-8238E0054C44} = {110AD4EF-3F17-4D7C-A2BB-D7711DE337FF}
+		{DCB01E15-2080-472A-8828-F33C99E8762C} = {10E62119-CB35-492B-994F-F967E00FC2D0}
+		{66F82C2F-F24E-44D9-B672-1904796509F2} = {10E62119-CB35-492B-994F-F967E00FC2D0}
+		{AECE8FAA-C721-497F-924F-355A318BE811} = {5BA23771-D7D5-4F2A-8CD2-3B8DB0A3D316}
+		{79781C3A-0DA0-4669-B532-EBB4FB244B83} = {3F876106-842F-415C-B917-965721A883AB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C44E1567-58DC-4016-9608-0525F8EED194}
+	EndGlobalSection
+EndGlobal
