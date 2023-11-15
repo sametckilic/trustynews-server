@@ -16,8 +16,15 @@ namespace TrustyNews.Api.Core.Domain.Models
         public string PhoneNumber { get; set; }
         public bool IsEmailConfirmed { get; set; }
         public bool IsPhoneConfirmed { get; set; }
-        public bool IsTrusty {  get; set; }
+        public bool IsConfirmedUser {  get; set; }
+        public bool IsTrustedUser {  get; set; }
+
+        public virtual UserPhoto UserPhoto { get; set; }
+
         public virtual ICollection<News> News { get; set; }
+        public virtual ICollection<NewsComment> NewsComment { get; set; }
+        public virtual ICollection<NewsBookmark> NewsBookmark { get; set; }    
+
 
     }
 }
