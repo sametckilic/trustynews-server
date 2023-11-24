@@ -14,5 +14,6 @@ namespace TrustyNews.Api.Core.Domain.Models
         public Guid CreatedById {  get; set; }
 
         public virtual News News { get; set; }
+        public virtual User CreatedBy { get; set; }
     }
 }

@@ -13,6 +13,10 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
     {
         public const string DEFAULT_SCHEMA = "dbo";
 
+        public TrustyNewsContext()
+        {
+        }
+
         public TrustyNewsContext(DbContextOptions options) : base(options)
         {
         }
@@ -26,9 +30,19 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
         public DbSet<User> Users { get; set; }
         public DbSet<UserPhoto> UserPhotos { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer("Data Source=SAMETSDESKTOP;Initial Catalog = trustynews;Trusted_Connection=true;TrustServerCertificate=True", opt =>
+                {
+                    opt.EnableRetryOnFailure();
+                });
+           
+        }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            OnBeforeSave();
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }

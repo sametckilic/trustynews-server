@@ -12,13 +12,16 @@ namespace TrustyNews.Api.Core.Domain.Models
         public string Content { get; set; }
         public Guid CreatedById { get; set; }
         public bool IsTrusty { get; set; }
+        public Guid NewsCoverPhotoId { get; set; }
         public virtual User CreatedBy { get; set; }
         public virtual NewsCoverPhoto NewsCoverPhoto { get; set; }
 
 
-        public virtual ICollection<NewsVote> NewsVote { get; set; }
-        public virtual ICollection<NewsComment> NewsComment { get; set; }
-        public virtual ICollection<NewsTag> NewsTag { get; set; }
+        public virtual ICollection<NewsVote> NewsVotes { get; set; }
+        public virtual ICollection<NewsComment> NewsComments { get; set; }
+        public virtual ICollection<NewsTag> NewsTags { get; set; }
+        public virtual ICollection<NewsBookmark> NewsBookmarks { get; set; }
+
 
 
     }

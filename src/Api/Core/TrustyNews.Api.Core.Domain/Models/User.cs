@@ -18,13 +18,15 @@ namespace TrustyNews.Api.Core.Domain.Models
         public bool IsPhoneConfirmed { get; set; }
         public bool IsConfirmedUser {  get; set; }
         public bool IsTrustedUser {  get; set; }
+        public Guid UserPhotoId { get; set; }
 
         public virtual UserPhoto UserPhoto { get; set; }
 
         public virtual ICollection<News> News { get; set; }
-        public virtual ICollection<NewsComment> NewsComment { get; set; }
-        public virtual ICollection<NewsBookmark> NewsBookmark { get; set; }    
-
+        public virtual ICollection<NewsComment> NewsComments { get; set; }
+        public virtual ICollection<NewsBookmark> NewsBookmarks { get; set; }    
+        public virtual ICollection<NewsCoverPhoto> NewsCoverPhotos { get; set;}
+        public virtual ICollection<NewsVote> NewsVotes { get; set; }
 
     }
 }

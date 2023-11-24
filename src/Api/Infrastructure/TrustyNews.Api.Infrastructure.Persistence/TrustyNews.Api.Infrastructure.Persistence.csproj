@@ -20,8 +20,4 @@
     <ProjectReference Include="..\..\Core\TrustyNews.Api.Core.Domain\TrustyNews.Api.Core.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EntityConfigurations\" />
-  </ItemGroup>
-
 </Project>
