@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\TrustyNews.Api.Core.Application\TrustyNews.Api.Core.Application.csproj" />
     <ProjectReference Include="..\..\Core\TrustyNews.Api.Core.Domain\TrustyNews.Api.Core.Domain.csproj" />
   </ItemGroup>
 
