@@ -10,9 +10,9 @@ using TrustyNews.Api.Infrastructure.Persistence.Context;
 
 namespace TrustyNews.Api.Infrastructure.Persistence.Repositories
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class NewsRepository : GenericRepository<News>, INewsRepository
     {
-        public UserRepository(TrustyNewsContext dbContext) : base(dbContext)
+        public NewsRepository(TrustyNewsContext dbContext) : base(dbContext)
         {
         }
     }

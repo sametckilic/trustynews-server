@@ -7,7 +7,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Api.Infrastructure.Persistence.Context;
+using TrustyNews.Api.Infrastructure.Persistence.Repositories;
 
 namespace TrustyNews.Api.Infrastructure.Persistence.Extensions
 {
@@ -23,6 +25,9 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Extensions
                     opt.EnableRetryOnFailure();
                 });
             });
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<INewsRepository, NewsRepository>();
 
             return services;
         }

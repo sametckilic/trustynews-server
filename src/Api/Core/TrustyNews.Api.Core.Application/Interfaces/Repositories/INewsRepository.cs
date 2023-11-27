@@ -7,7 +7,7 @@ using TrustyNews.Api.Core.Domain.Models;
 
 namespace TrustyNews.Api.Core.Application.Interfaces.Repositories
 {
-    public interface IUserRepository : IGenericRepository<User>
+    public interface INewsRepository : IGenericRepository<News>
     {
     }
 }
