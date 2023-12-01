@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrustyNews.Common.Models.RequestModels;
+using TrustyNews.Common.Models.RequestModels.User;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
 {
@@ -19,7 +19,7 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
 
             RuleFor(i => i.Password)
                 .NotNull()
-                .MinimumLength(6)
+                .MinimumLength(4)
                 .WithMessage("{PropertyName} should at least be {MinLenght} characters");
         }
 

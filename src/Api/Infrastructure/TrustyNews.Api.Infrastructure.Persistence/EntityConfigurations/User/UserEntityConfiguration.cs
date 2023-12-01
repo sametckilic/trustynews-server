@@ -22,6 +22,13 @@ namespace TrustyNews.Api.Infrastructure.Persistence.EntityConfigurations.User
                    .WithOne(i => i.CreatedBy)
                    .HasForeignKey<Core.Domain.Models.User>(i => i.UserPhotoId)
                    .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Property(i => i.IsTrustedUser).HasDefaultValue(false);
+            builder.Property(i => i.IsConfirmedUser).HasDefaultValue(false);
+            builder.Property(i => i.IsPhoneConfirmed).HasDefaultValue(false);
+            builder.Property(i => i.IsEmailConfirmed).HasDefaultValue(false);
+
+
         }
 
     }

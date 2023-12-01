@@ -23,6 +23,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.EntityConfigurations.User
                    .HasForeignKey<UserPhoto>(i => i.CreatedById)
                    .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Property(i => i.PhotoBase).HasDefaultValue("user-photos/ifnwrbxcragwe0bdnugz");
         }
     }
 }

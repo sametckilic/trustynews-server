@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrustyNews.Api.Core.Application.Features.Commands.User.Create;
 using TrustyNews.Api.Core.Domain.Models;
 using TrustyNews.Common.Models.Queries;
+using TrustyNews.Common.Models.RequestModels.User;
 
 namespace TrustyNews.Api.Core.Application.Mapping
 {
@@ -15,6 +17,11 @@ namespace TrustyNews.Api.Core.Application.Mapping
         {
             CreateMap<User, LoginUserViewModel>()
                 .ReverseMap();
+
+            CreateMap<CreateUserCommand, User>();
+
+            CreateMap<CreateUserPhotoHelper, UserPhoto>();
+          
         }
     }
 }

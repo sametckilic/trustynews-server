@@ -13,7 +13,7 @@ using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Common.Exceptions;
 using TrustyNews.Common.Infrastructure;
 using TrustyNews.Common.Models.Queries;
-using TrustyNews.Common.Models.RequestModels;
+using TrustyNews.Common.Models.RequestModels.User;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
 {
@@ -62,7 +62,7 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
         }
         private string GenerateToken(Claim[] claims)
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["AuthConfig:Secret"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT_SECRET"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expiry = DateTime.Now.AddDays(10);
 

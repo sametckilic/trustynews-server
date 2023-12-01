@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrustyNews.Api.Infrastructure.Persistence.Context;
 
@@ -11,9 +12,10 @@ using TrustyNews.Api.Infrastructure.Persistence.Context;
 namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(TrustyNewsContext))]
-    partial class TrustyNewsContextModelSnapshot : ModelSnapshot
+    [Migration("20231201152758_update4")]
+    partial class update4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
