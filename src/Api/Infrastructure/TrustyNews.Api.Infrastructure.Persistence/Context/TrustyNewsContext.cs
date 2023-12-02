@@ -34,7 +34,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=SAMETSDESKTOP;Initial Catalog = trustynews;Trusted_Connection=true;TrustServerCertificate=True", opt =>
+                optionsBuilder.UseSqlServer("Data Source=193.164.5.130,1433;Initial Catalog =trustynews;Integrated Security=false;User ID=samet;Password=Deneme123.;", opt =>
                 {
                     opt.EnableRetryOnFailure();
                 });

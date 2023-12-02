@@ -20,7 +20,6 @@ namespace TrustyNews.Api.Core.Application.Mapping
 
             CreateMap<CreateUserCommand, User>();
 
-            CreateMap<CreateUserPhotoHelper, UserPhoto>();
           
         }
     }
