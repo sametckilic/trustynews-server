@@ -19,6 +19,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
 
         public TrustyNewsContext(DbContextOptions options) : base(options)
         {
+
         }
 
         public DbSet<News> News { get; set; }
@@ -49,6 +50,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
 
         public override int SaveChanges()
         {
+
             OnBeforeSave();
 
             return base.SaveChanges();
@@ -56,6 +58,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
+
             OnBeforeSave();
 
             return base.SaveChanges(acceptAllChangesOnSuccess);
@@ -63,6 +66,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
+
             OnBeforeSave();
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
@@ -70,6 +74,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Context
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
+
             OnBeforeSave();
             return base.SaveChangesAsync(cancellationToken);
         }

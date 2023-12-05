@@ -27,6 +27,8 @@ namespace TrustyNews.Api.Infrastructure.Persistence.EntityConfigurations.News
                   .WithOne(i => i.News)
                   .HasForeignKey<NewsCoverPhoto>(i => i.NewsId);
 
+            builder.Property(i => i.IsTrusty).HasDefaultValue(false);
+            builder.Property(i => i.NewsCoverPhotoId).HasDefaultValue(Guid.Empty); 
 
         }
     }

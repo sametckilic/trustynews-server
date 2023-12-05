@@ -9,7 +9,7 @@ using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Api.Core.Domain.Models;
 using TrustyNews.Common.Exceptions;
 using TrustyNews.Common.Infrastructure;
-using TrustyNews.Common.Models.RequestModels.User;
+using TrustyNews.Common.Models.RequestModels.User.Create;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.User.Create
 {
@@ -28,10 +28,15 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Create
 
         public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var existsUser = await userRepository.GetSingleAsync(i => i.EmailAddress == request.EmailAddress);
-
-            if (existsUser != null)
+            
+            var existsUserEmailAddress = await userRepository.GetSingleAsync(i => i.EmailAddress == request.EmailAddress);
+            if (existsUserEmailAddress != null)
                 throw new DatabaseValidationException("This email address is already used.");
+
+            // TODO numara kontrol
+            //var existsPhoneNumber = await userRepository.GetSingleAsync(i => i.PhoneNumber == request.PhoneNumber);
+            //if (existsPhoneNumber != null)
+            //    throw new DatabaseValidationException("This phone number is already used.");
 
             var dbUser = mapper.Map<Domain.Models.User>(request);
 
@@ -46,18 +51,15 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Create
 
             var userPhotoRows = await userPhotoRepository.AddAsync(dbUserPhoto);
 
-            UpdateCreatedUserPhotoToDefault(dbUser.Id, dbUserPhoto.Id);
+            var user = await userRepository.GetByIdAsync(dbUser.Id);
 
-            return dbUser.Id;
-        }
-
-        public async void UpdateCreatedUserPhotoToDefault(Guid userId, Guid photoId)
-        {
-            var user = await userRepository.GetByIdAsync(userId);
-
-            user.UserPhotoId = photoId;
+            user.UserPhotoId = dbUserPhoto.Id;
 
             var updatedRows = await userRepository.UpdateAsync(user);
+
+
+
+            return dbUser.Id;
         }
 
        

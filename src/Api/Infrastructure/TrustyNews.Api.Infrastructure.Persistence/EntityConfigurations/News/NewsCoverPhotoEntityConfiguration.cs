@@ -26,6 +26,8 @@ namespace TrustyNews.Api.Infrastructure.Persistence.EntityConfigurations.News
                     .WithMany(i => i.NewsCoverPhotos)
                     .HasForeignKey(i => i.CreatedById);
 
+            builder.Property(i => i.PhotoBase).HasDefaultValue("user-photos/ifnwrbxcragwe0bdnugz");
+
         }
     }
 }

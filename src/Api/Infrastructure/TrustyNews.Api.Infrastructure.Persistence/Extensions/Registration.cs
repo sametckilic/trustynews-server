@@ -26,6 +26,8 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Extensions
                 });
             });
 
+            
+
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<IUserPhotoRepository, UserPhotoRepository>();

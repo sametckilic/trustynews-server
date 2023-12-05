@@ -23,7 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Commands\User\Update\UserPhoto\" />
+    <Folder Include="Features\Commands\News\Bookmark\CreateBookmark\" />
+    <Folder Include="Features\Commands\News\Vote\CreateVote\" />
+    <Folder Include="Features\Commands\News\Vote\DeleteVote\" />
+    <Folder Include="Features\Commands\News\Bookmark\DeleteBookmark\" />
+    <Folder Include="Features\Commands\News\Vote\" />
+    <Folder Include="Features\Commands\News\Tag\CreateTag\" />
+    <Folder Include="Features\Commands\News\Tag\DeleteTag\" />
+    <Folder Include="Features\Commands\News\Bookmark\" />
+    <Folder Include="Features\Commands\News\Tag\" />
     <Folder Include="Features\Queries\" />
   </ItemGroup>
 

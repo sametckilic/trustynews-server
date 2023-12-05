@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Features.Commands.User.Create;
 using TrustyNews.Api.Core.Domain.Models;
 using TrustyNews.Common.Models.Queries;
-using TrustyNews.Common.Models.RequestModels.User;
+using TrustyNews.Common.Models.RequestModels.User.Create;
 
 namespace TrustyNews.Api.Core.Application.Mapping
 {

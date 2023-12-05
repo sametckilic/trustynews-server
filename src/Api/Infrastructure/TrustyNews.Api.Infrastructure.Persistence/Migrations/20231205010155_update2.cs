@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
 {
-    public partial class update4 : Migration
+    public partial class update2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
                 name: "PhotoBase",
                 schema: "dbo",
-                table: "userphotos",
+                table: "newscoverphotos",
                 type: "nvarchar(max)",
                 nullable: true,
                 defaultValue: "user-photos/ifnwrbxcragwe0bdnugz",
@@ -21,14 +21,24 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
                 oldNullable: true);
 
             migrationBuilder.AlterColumn<Guid>(
-                name: "CreatedById",
+                name: "NewsCoverPhotoId",
                 schema: "dbo",
-                table: "userphotos",
+                table: "news",
                 type: "uniqueidentifier",
                 nullable: false,
+                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"),
                 oldClrType: typeof(Guid),
-                oldType: "uniqueidentifier",
-                oldDefaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
+                oldType: "uniqueidentifier");
+
+            migrationBuilder.AlterColumn<bool>(
+                name: "IsTrusty",
+                schema: "dbo",
+                table: "news",
+                type: "bit",
+                nullable: false,
+                defaultValue: false,
+                oldClrType: typeof(bool),
+                oldType: "bit");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -36,7 +46,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
             migrationBuilder.AlterColumn<string>(
                 name: "PhotoBase",
                 schema: "dbo",
-                table: "userphotos",
+                table: "newscoverphotos",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -45,14 +55,24 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
                 oldDefaultValue: "user-photos/ifnwrbxcragwe0bdnugz");
 
             migrationBuilder.AlterColumn<Guid>(
-                name: "CreatedById",
+                name: "NewsCoverPhotoId",
                 schema: "dbo",
-                table: "userphotos",
+                table: "news",
                 type: "uniqueidentifier",
                 nullable: false,
-                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"),
                 oldClrType: typeof(Guid),
-                oldType: "uniqueidentifier");
+                oldType: "uniqueidentifier",
+                oldDefaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
+
+            migrationBuilder.AlterColumn<bool>(
+                name: "IsTrusty",
+                schema: "dbo",
+                table: "news",
+                type: "bit",
+                nullable: false,
+                oldClrType: typeof(bool),
+                oldType: "bit",
+                oldDefaultValue: false);
         }
     }
 }

@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using TrustyNews.Common.Models.RequestModels.User;
+using TrustyNews.Common.Models.RequestModels.User.ChangePassword;
+using TrustyNews.Common.Models.RequestModels.User.Create;
+using TrustyNews.Common.Models.RequestModels.User.Login;
 
 namespace TrustyNews.Api.WebApi.Controllers
 {
@@ -28,6 +30,15 @@ namespace TrustyNews.Api.WebApi.Controllers
         [HttpPost]
         [Route("Create")]
         public async Task<IActionResult> Create([FromBody]CreateUserCommand command)
+        {
+            var res = await mediator.Send(command);
+
+            return Ok(res);
+        }
+
+        [HttpPost]
+        [Route("ChangePassowrd")]
+        public async Task<IActionResult> ChangePassword([FromBody]ChangePasswordCommand command)
         {
             var res = await mediator.Send(command);
 

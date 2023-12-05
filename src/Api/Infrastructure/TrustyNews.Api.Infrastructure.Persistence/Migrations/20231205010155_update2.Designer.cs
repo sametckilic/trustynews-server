@@ -12,8 +12,8 @@ using TrustyNews.Api.Infrastructure.Persistence.Context;
 namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(TrustyNewsContext))]
-    [Migration("20231201151857_update3")]
-    partial class update3
+    [Migration("20231205010155_update2")]
+    partial class update2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,10 +41,14 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsTrusty")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<Guid>("NewsCoverPhotoId")
-                        .HasColumnType("uniqueidentifier");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasDefaultValue(new Guid("00000000-0000-0000-0000-000000000000"));
 
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
@@ -126,7 +130,9 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PhotoBase")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("user-photos/ifnwrbxcragwe0bdnugz");
 
                     b.HasKey("Id");
 
@@ -256,12 +262,12 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("CreatedById")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("00000000-0000-0000-0000-000000000000"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PhotoBase")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("user-photos/ifnwrbxcragwe0bdnugz");
 
                     b.HasKey("Id");
 

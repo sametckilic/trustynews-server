@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Common.Exceptions;
-using TrustyNews.Common.Models.RequestModels.User;
+using TrustyNews.Common.Models.RequestModels.User.Update;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.User.Update.User
 {
@@ -29,7 +29,27 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Update.User
             if (dbUser == null)
                 throw new DatabaseValidationException("User not found!");
 
-            return Guid.Empty;
+            var emailExist = userRepository.GetSingleAsync(i => i.EmailAddress == request.EmailAddress);
+
+            if (emailExist != null)
+                throw new DatabaseValidationException("This email address is already used.");
+
+            var phoneNumberExists = userRepository.GetSingleAsync(i => i.PhoneNumber == request.PhoneNumber);
+            
+            if(phoneNumberExists != null)    
+                throw new DatabaseValidationException("This phone number is already used.");
+
+            if (dbUser.PhoneNumber != request.PhoneNumber)
+                dbUser.IsPhoneConfirmed = false;
+
+            if (dbUser.EmailAddress!= request.EmailAddress)
+                dbUser.IsEmailConfirmed = false;
+
+            mapper.Map(request, dbUser);
+
+            var rows = await userRepository.UpdateAsync(dbUser);
+
+            return dbUser.Id;
 
             
         }

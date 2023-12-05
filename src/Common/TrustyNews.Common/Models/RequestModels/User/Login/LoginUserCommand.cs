@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrustyNews.Common.Models.Queries;
 
-namespace TrustyNews.Common.Models.RequestModels.User
+namespace TrustyNews.Common.Models.RequestModels.User.Login
 {
     public class LoginUserCommand : IRequest<LoginUserViewModel>
     {

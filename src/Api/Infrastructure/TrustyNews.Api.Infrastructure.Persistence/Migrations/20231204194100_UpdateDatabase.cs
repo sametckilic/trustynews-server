@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
 {
-    public partial class InitMigration : Migration
+    public partial class UpdateDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -24,10 +24,10 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsEmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    IsPhoneConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    IsConfirmedUser = table.Column<bool>(type: "bit", nullable: false),
-                    IsTrustedUser = table.Column<bool>(type: "bit", nullable: false),
+                    IsEmailConfirmed = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsPhoneConfirmed = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsConfirmedUser = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsTrustedUser = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     UserPhotoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -67,7 +67,7 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PhotoBase = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhotoBase = table.Column<string>(type: "nvarchar(max)", nullable: true, defaultValue: "user-photos/ifnwrbxcragwe0bdnugz"),
                     CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },

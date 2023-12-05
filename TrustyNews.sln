@@ -17,13 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{3F8761
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrustyNews.Common", "src\Common\TrustyNews.Common\TrustyNews.Common.csproj", "{0877E40E-1A4A-4630-B1B4-8238E0054C44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.Core.Application", "src\Api\Core\TrustyNews.Api.Core.Application\TrustyNews.Api.Core.Application.csproj", "{DCB01E15-2080-472A-8828-F33C99E8762C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrustyNews.Api.Core.Application", "src\Api\Core\TrustyNews.Api.Core.Application\TrustyNews.Api.Core.Application.csproj", "{DCB01E15-2080-472A-8828-F33C99E8762C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.Core.Domain", "src\Api\Core\TrustyNews.Api.Core.Domain\TrustyNews.Api.Core.Domain.csproj", "{66F82C2F-F24E-44D9-B672-1904796509F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrustyNews.Api.Core.Domain", "src\Api\Core\TrustyNews.Api.Core.Domain\TrustyNews.Api.Core.Domain.csproj", "{66F82C2F-F24E-44D9-B672-1904796509F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.Infrastructure.Persistence", "src\Api\Infrastructure\TrustyNews.Api.Infrastructure.Persistence\TrustyNews.Api.Infrastructure.Persistence.csproj", "{AECE8FAA-C721-497F-924F-355A318BE811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrustyNews.Api.Infrastructure.Persistence", "src\Api\Infrastructure\TrustyNews.Api.Infrastructure.Persistence\TrustyNews.Api.Infrastructure.Persistence.csproj", "{AECE8FAA-C721-497F-924F-355A318BE811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustyNews.Api.WebApi", "src\Api\WebApi\TrustyNews.Api.WebApi\TrustyNews.Api.WebApi.csproj", "{79781C3A-0DA0-4669-B532-EBB4FB244B83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrustyNews.Api.WebApi", "src\Api\WebApi\TrustyNews.Api.WebApi\TrustyNews.Api.WebApi.csproj", "{79781C3A-0DA0-4669-B532-EBB4FB244B83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
