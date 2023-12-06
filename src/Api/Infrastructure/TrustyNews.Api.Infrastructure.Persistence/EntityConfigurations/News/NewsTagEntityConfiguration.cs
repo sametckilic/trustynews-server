@@ -21,6 +21,10 @@ namespace TrustyNews.Api.Infrastructure.Persistence.EntityConfigurations.News
             builder.HasOne(i => i.News)
                     .WithMany(i => i.NewsTags)
                     .HasForeignKey(i => i.NewsId);
+
+            builder.HasOne(i => i.CreatedBy)
+                .WithMany(i => i.NewsTags)
+                .HasForeignKey(i => i.CreatedById);
         }
     }
 }

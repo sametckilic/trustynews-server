@@ -8,11 +8,11 @@ using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Api.Core.Domain.Models;
 using TrustyNews.Api.Infrastructure.Persistence.Context;
 
-namespace TrustyNews.Api.Infrastructure.Persistence.Repositories
+namespace TrustyNews.Api.Infrastructure.Persistence.Repositories.User
 {
-    public class UserRepository : GenericRepository<User>, IUserRepository
+    public class UserPhotoRepository : GenericRepository<UserPhoto>, IUserPhotoRepository
     {
-        public UserRepository(TrustyNewsContext dbContext) : base(dbContext)
+        public UserPhotoRepository(TrustyNewsContext dbContext) : base(dbContext)
         {
         }
     }

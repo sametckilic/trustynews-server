@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Api.Infrastructure.Persistence.Context;
-using TrustyNews.Api.Infrastructure.Persistence.Repositories;
+using TrustyNews.Api.Infrastructure.Persistence.Repositories.News;
+using TrustyNews.Api.Infrastructure.Persistence.Repositories.User;
 
 namespace TrustyNews.Api.Infrastructure.Persistence.Extensions
 {
@@ -27,9 +28,13 @@ namespace TrustyNews.Api.Infrastructure.Persistence.Extensions
             });
 
             
-
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<INewsBookmarkRepository, NewsBookmarkRepository>();
+            services.AddScoped<INewsCommentRepository, NewsCommentRepository>();
+            services.AddScoped<INewsCoverPhotoRepository, NewsCoverPhotoRepository>();
             services.AddScoped<INewsRepository, NewsRepository>();
+            services.AddScoped<INewsTagRepository, NewsTagRepository>();
+            services.AddScoped<INewsVoteRepository, NewsVoteRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserPhotoRepository, UserPhotoRepository>();
 
             return services;

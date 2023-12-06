@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Api.Core.Domain.Models;
+using TrustyNews.Api.Infrastructure.Persistence.Context;
 
-namespace TrustyNews.Api.Infrastructure.Persistence.Repositories
+namespace TrustyNews.Api.Infrastructure.Persistence.Repositories.News
 {
-    public class NewsCoverPhotoRepository : GenericRepository<NewsCoverPhoto>, INewsCoverPhotoRepository
+    public class NewsVoteRepository : GenericRepository<NewsVote>, INewsVoteRepository
     {
-        public NewsCoverPhotoRepository(DbContext dbContext) : base(dbContext)
+        public NewsVoteRepository(TrustyNewsContext dbContext) : base(dbContext)
         {
         }
     }

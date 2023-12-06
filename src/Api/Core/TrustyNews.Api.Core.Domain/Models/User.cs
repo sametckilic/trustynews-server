@@ -27,6 +27,7 @@ namespace TrustyNews.Api.Core.Domain.Models
         public virtual ICollection<NewsBookmark> NewsBookmarks { get; set; }    
         public virtual ICollection<NewsCoverPhoto> NewsCoverPhotos { get; set;}
         public virtual ICollection<NewsVote> NewsVotes { get; set; }
+        public virtual ICollection<NewsTag> NewsTags { get; set; }
 
     }
 }
