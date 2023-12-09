@@ -1,13 +1,17 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using TrustyNews.Common.Models.RequestModels.News.Bookmark.Create;
-using TrustyNews.Common.Models.RequestModels.News.Bookmark.Delete;
-using TrustyNews.Common.Models.RequestModels.News.Create;
-using TrustyNews.Common.Models.RequestModels.News.Tag.Create;
-using TrustyNews.Common.Models.RequestModels.News.Vote.Create;
-using TrustyNews.Common.Models.RequestModels.News.Vote.Delete;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.CreateBookmark;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.DeleteBookmark;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Create;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.CreateTag;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.DeleteTag;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Vote.CreateVote;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Vote.DeleteVote;
+using TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews;
+using TrustyNews.Api.Core.Application.Features.Queries.News.GetNews;
 
 namespace TrustyNews.Api.WebApi.Controllers
 {
@@ -16,7 +20,7 @@ namespace TrustyNews.Api.WebApi.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class NewsController : ControllerBase
+    public class NewsController : BaseController
     {
         private readonly IMediator mediator;
 
@@ -24,6 +28,33 @@ namespace TrustyNews.Api.WebApi.Controllers
         {
             this.mediator = mediator;
         }
+        [HttpGet]
+        public async Task<IActionResult> GetNews([FromQuery] GetNewsQuery query)
+        {
+            var news = await mediator.Send(query);
+
+            return Ok(news);
+        }
+        [HttpGet]
+        [Route("MainPageNews")]
+        public async Task<IActionResult> GetMainPageNews(int page, int pageSize) 
+        {
+            var news = await mediator.Send(new GetMainPageNewsQuery(UserId, page, pageSize));
+
+            return Ok(news);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         [HttpPost]
         [Route("Create")]

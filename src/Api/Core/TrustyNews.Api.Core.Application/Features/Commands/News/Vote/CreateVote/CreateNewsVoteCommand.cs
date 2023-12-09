@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrustyNews.Common.Models;
 
-namespace TrustyNews.Common.Models.RequestModels.News.Vote.Create
+namespace TrustyNews.Api.Core.Application.Features.Commands.News.Vote.CreateVote
 {
     public class CreateNewsVoteCommand : IRequest<bool>
     {

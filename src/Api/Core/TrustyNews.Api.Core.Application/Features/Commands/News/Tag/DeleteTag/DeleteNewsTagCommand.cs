@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrustyNews.Common.Models.RequestModels.News.Tag.Create
+namespace TrustyNews.Api.Core.Application.Features.Commands.News.Tag.DeleteTag
 {
     public class DeleteNewsTagCommand : IRequest<bool>
     {

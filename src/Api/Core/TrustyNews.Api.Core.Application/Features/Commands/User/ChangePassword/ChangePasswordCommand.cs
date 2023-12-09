@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrustyNews.Common.Models.RequestModels.User.ChangePassword
+namespace TrustyNews.Api.Core.Application.Features.Commands.User.ChangePassword
 {
     public class ChangePasswordCommand : IRequest<bool>
     {

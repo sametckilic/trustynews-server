@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrustyNews.Common.Models.RequestModels.User.Create
+namespace TrustyNews.Api.Core.Application.Features.Commands.User.Create
 {
     public class CreateUserCommand : IRequest<Guid>
     {

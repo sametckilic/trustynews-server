@@ -20,6 +20,7 @@ namespace TrustyNews.Api.Core.Application.Extensions
             services.AddMediatR(assm);
             services.AddAutoMapper(assm);
             services.AddValidatorsFromAssembly(assm);
+            
 
             return services;
         }

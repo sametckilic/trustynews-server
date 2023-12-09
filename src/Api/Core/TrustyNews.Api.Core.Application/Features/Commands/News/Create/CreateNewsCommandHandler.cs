@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Api.Core.Domain.Models;
-using TrustyNews.Common.Models.RequestModels.News.Create;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.News.Create
 {

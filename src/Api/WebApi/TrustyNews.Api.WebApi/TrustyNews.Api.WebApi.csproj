@@ -8,10 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\TrustyNews.Common\TrustyNews.Common.csproj" />
+    <ProjectReference Include="..\..\Core\TrustyNews.Api.Core.Application\TrustyNews.Api.Core.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\TrustyNews.Api.Infrastructure.Persistence\TrustyNews.Api.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 

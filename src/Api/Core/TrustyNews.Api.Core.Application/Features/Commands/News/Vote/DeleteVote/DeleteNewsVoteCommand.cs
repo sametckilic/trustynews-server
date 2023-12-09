@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrustyNews.Common.Models.RequestModels.News.Vote.Delete
+namespace TrustyNews.Api.Core.Application.Features.Commands.News.Vote.DeleteVote
 {
     public class DeleteNewsVoteCommand : IRequest<bool>
     {

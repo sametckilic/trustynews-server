@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrustyNews.Common.Models.RequestModels.News.Bookmark.Delete
+namespace TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.DeleteBookmark
 {
     public class DeleteNewsBookmarkCommand : IRequest<bool>
     {

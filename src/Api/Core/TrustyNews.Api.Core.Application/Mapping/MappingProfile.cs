@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.CreateBookmark;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Create;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.CreateTag;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Vote.CreateVote;
 using TrustyNews.Api.Core.Application.Features.Commands.User.Create;
 using TrustyNews.Api.Core.Domain.Models;
 using TrustyNews.Common.Models.Queries;
-using TrustyNews.Common.Models.RequestModels.News.Bookmark.Create;
-using TrustyNews.Common.Models.RequestModels.News.Create;
-using TrustyNews.Common.Models.RequestModels.News.Tag.Create;
-using TrustyNews.Common.Models.RequestModels.News.Vote.Create;
-using TrustyNews.Common.Models.RequestModels.User.Create;
+
 
 namespace TrustyNews.Api.Core.Application.Mapping
 {
@@ -32,7 +32,8 @@ namespace TrustyNews.Api.Core.Application.Mapping
 
             CreateMap<CreateNewsTagCommand, NewsTag>();
 
-          
+            CreateMap<News, GetNewsViewModel>()
+                .ForMember(x => x.VoteCount, y => y.MapFrom(z => z.NewsVotes.Count));
         }
     }
 }

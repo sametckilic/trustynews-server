@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Common.Exceptions;
 using TrustyNews.Common.Infrastructure;
-using TrustyNews.Common.Models.RequestModels.User.ChangePassword;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.User.ChangePassword
 {

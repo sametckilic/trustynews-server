@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TrustyNews.Common.Models.RequestModels.User.Login;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
 {

@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Common.Exceptions;
-using TrustyNews.Common.Models.RequestModels.User.Update;
 
 namespace TrustyNews.Api.Core.Application.Features.Commands.User.Update.User
 {

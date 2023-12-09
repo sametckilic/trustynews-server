@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrustyNews.Common.Models.RequestModels.User.Update
+namespace TrustyNews.Api.Core.Application.Features.Commands.User.Update.User
 {
     public class UpdateUserCommand : IRequest<Guid>
     {
