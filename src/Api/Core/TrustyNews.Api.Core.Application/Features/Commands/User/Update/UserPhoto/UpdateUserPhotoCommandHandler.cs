@@ -25,9 +25,9 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Update.UserPhot
         public async Task<Guid> Handle(UpdateUserPhotoCommand request, CancellationToken cancellationToken)
         {
             UploadPhoto uploadPhoto = new UploadPhoto();
-            //var user = await userRepository.GetByIdAsync(request.UserId);
-            //if (user == null)
-            //    throw new DatabaseValidationException("User not found!");
+            var user = await userRepository.GetByIdAsync(request.UserId);
+            if (user == null)
+                throw new DatabaseValidationException("User not found!");
 
             var file = request.File;
 
@@ -39,21 +39,25 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Update.UserPhot
                 {
                     var uploadParams = new ImageUploadParams()
                     {
-                        File = new CloudinaryDotNet.FileDescription(file.Name, stream)
+                        File = new CloudinaryDotNet.FileDescription(file.Name, stream),
+                        Folder = "user-photos"
                     };
 
-                    uploadPhoto.cloudinary.Upload(uploadParams);
+                    uploadResult = uploadPhoto.cloudinary.Upload(uploadParams);
 
                 }
             }
 
-            var userPhoto = new Domain.Models.UserPhoto()
-            {
-                PhotoBase = uploadResult.PublicId
-            };
+            var dbPhoto = userPhotoRepository.AsQueryable()
+                .Where(i => i.CreatedById == request.UserId)
+                .FirstOrDefault();
+
+            dbPhoto.PhotoBase = uploadResult.PublicId;
+
+            await userPhotoRepository.UpdateAsync(dbPhoto);
 
 
-            return userPhoto.Id;
+            return dbPhoto.Id;
         }
     }
 }

@@ -10,12 +10,12 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Update.UserPhot
 {
     public class UpdateUserPhotoCommand : IRequest<Guid>
     {
-        public UpdateUserPhotoCommand(IFormFile file, Guid id)
+        public UpdateUserPhotoCommand(IFormFile file, Guid userId)
         {
-            Id = id;
+            UserId = userId;
             File = file;
         }
-        public Guid Id { get; set; }
+        public Guid UserId { get; set; }
         public IFormFile File { get; set; }
 
     }

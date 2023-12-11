@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.CreateBookmark;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.DeleteBookmark;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Comment;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Create;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.CreateTag;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.DeleteTag;
@@ -12,11 +13,13 @@ using TrustyNews.Api.Core.Application.Features.Commands.News.Vote.CreateVote;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Vote.DeleteVote;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetNews;
+using TrustyNews.Api.Core.Application.Features.Queries.News.GetNewsComment;
+using TrustyNews.Api.Core.Application.Features.Queries.News.GetUserNews;
 
 namespace TrustyNews.Api.WebApi.Controllers
 {
     /// <summary>
-    /// TODO proplari {} ile al
+    /// TODO required proplari {} ile al
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -37,15 +40,28 @@ namespace TrustyNews.Api.WebApi.Controllers
         }
         [HttpGet]
         [Route("MainPageNews")]
-        public async Task<IActionResult> GetMainPageNews(int page, int pageSize) 
+        public async Task<IActionResult> GetMainPageNews(int page =1 , int pageSize= 10) 
         {
             var news = await mediator.Send(new GetMainPageNewsQuery(UserId, page, pageSize));
 
             return Ok(news);
         }
+        [HttpGet]
+        [Route("GetUserNews")]
+        public async Task<IActionResult> GetUserNews(Guid userId, string userName, int page = 1, int pageSize= 10)
+        {
+            var news = await mediator.Send(new GetUserNewsQuery(userId, userName, page, pageSize));
 
+            return Ok(news);    
+        }
+        [HttpGet]
+        [Route("GetNewsComments/{newsId}")]
+        public async Task<IActionResult> GetNewsComment(Guid newsId, int page = 1, int pageSize = 10)
+        {
+            var comments = await mediator.Send(new GetNewsCommentQuery(newsId, page, pageSize));
 
-
+            return Ok(comments);
+        }
 
 
 
@@ -113,6 +129,14 @@ namespace TrustyNews.Api.WebApi.Controllers
         [HttpPost]
         [Route("Tag/Delete")]
         public async Task<IActionResult> DeleteTag([FromBody] DeleteNewsTagCommand command)
+        {
+            var res = await mediator.Send(command);
+
+            return Ok(res);
+        }
+        [HttpPost]
+        [Route("Comment/Create")]
+        public async Task<IActionResult> CreateComment([FromBody] CreateNewsCommentCommand command)
         {
             var res = await mediator.Send(command);
 

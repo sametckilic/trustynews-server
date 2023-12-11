@@ -6,6 +6,7 @@ using TrustyNews.Api.Core.Application.Features.Commands.User.ChangePassword;
 using TrustyNews.Api.Core.Application.Features.Commands.User.Create;
 using TrustyNews.Api.Core.Application.Features.Commands.User.Login;
 using TrustyNews.Api.Core.Application.Features.Commands.User.Update.UserPhoto;
+using TrustyNews.Api.Core.Application.Features.Queries.User.GetUserDetail;
 
 namespace TrustyNews.Api.WebApi.Controllers
 {
@@ -18,6 +19,22 @@ namespace TrustyNews.Api.WebApi.Controllers
         {
             this.mediator = mediator;
         }
+
+
+        [HttpGet]
+        [Route("GetUserDetail/{userId}")]
+        public async Task<IActionResult> GetUserDetail(Guid userId)
+        {
+            var user = await mediator.Send(new GetUserDetailQuery(userId));
+
+            return Ok(user);
+        }
+
+
+
+
+
+
 
         [HttpPost]
         [Route("Login")]
