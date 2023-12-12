@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Comment.Create;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Api.Core.Domain.Models;
 
@@ -30,6 +31,5 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.News.Comment
             return comment;
         }
 
-        //TODO delete comment ekle
     }
 }

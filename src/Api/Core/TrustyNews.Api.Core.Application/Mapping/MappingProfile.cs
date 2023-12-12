@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.CreateBookmark;
-using TrustyNews.Api.Core.Application.Features.Commands.News.Comment;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Comment.Create;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Create;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.CreateTag;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Vote.CreateVote;

@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.CreateBookmark;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.DeleteBookmark;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Comment;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Comment.Create;
+using TrustyNews.Api.Core.Application.Features.Commands.News.Comment.Delete;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Create;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.CreateTag;
 using TrustyNews.Api.Core.Application.Features.Commands.News.Tag.DeleteTag;
@@ -15,6 +17,7 @@ using TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetNewsComment;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetUserNews;
+using TrustyNews.Api.Core.Application.Features.Queries.News.SearchBySubjectOrTags;
 
 namespace TrustyNews.Api.WebApi.Controllers
 {
@@ -71,6 +74,14 @@ namespace TrustyNews.Api.WebApi.Controllers
 
 
 
+        [HttpPost]
+        [Route("Search/{searchText}")]
+        public async Task<IActionResult> SearchBySubjectOrTag(string searchText)
+        {
+            var res = await mediator.Send(new SearchNewsBySubjectOrTagsQuery(searchText));
+
+            return Ok(res); 
+        }
 
         [HttpPost]
         [Route("Create")]
@@ -141,6 +152,16 @@ namespace TrustyNews.Api.WebApi.Controllers
             var res = await mediator.Send(command);
 
             return Ok(res);
+        }
+
+        [HttpPost]
+        [Route("Comment/Delete/{commentId}")]
+
+        public async Task<IActionResult> DeleteComment(Guid commentId)
+        {
+            var res = await mediator.Send(new DeleteNewsCommentCommand(commentId));
+
+            return Ok(res); 
         }
     }
 }
