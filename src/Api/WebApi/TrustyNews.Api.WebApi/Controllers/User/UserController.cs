@@ -8,7 +8,7 @@ using TrustyNews.Api.Core.Application.Features.Commands.User.Login;
 using TrustyNews.Api.Core.Application.Features.Commands.User.Update.UserPhoto;
 using TrustyNews.Api.Core.Application.Features.Queries.User.GetUserDetail;
 
-namespace TrustyNews.Api.WebApi.Controllers
+namespace TrustyNews.Api.WebApi.Controllers.User
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -38,7 +38,7 @@ namespace TrustyNews.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public async Task<IActionResult> Login([FromBody]LoginUserCommand command)
+        public async Task<IActionResult> Login([FromBody] LoginUserCommand command)
         {
             var res = await mediator.Send(command);
 
@@ -47,7 +47,7 @@ namespace TrustyNews.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> Create([FromBody]CreateUserCommand command)
+        public async Task<IActionResult> Create([FromBody] CreateUserCommand command)
         {
             var res = await mediator.Send(command);
 
@@ -56,7 +56,7 @@ namespace TrustyNews.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("ChangePassowrd")]
-        public async Task<IActionResult> ChangePassword([FromBody]ChangePasswordCommand command)
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordCommand command)
         {
             var res = await mediator.Send(command);
 

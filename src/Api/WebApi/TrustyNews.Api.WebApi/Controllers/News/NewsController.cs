@@ -19,7 +19,7 @@ using TrustyNews.Api.Core.Application.Features.Queries.News.GetNewsComment;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetUserNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.SearchBySubjectOrTags;
 
-namespace TrustyNews.Api.WebApi.Controllers
+namespace TrustyNews.Api.WebApi.Controllers.News
 {
     /// <summary>
     /// TODO required proplari {} ile al
@@ -34,6 +34,8 @@ namespace TrustyNews.Api.WebApi.Controllers
         {
             this.mediator = mediator;
         }
+
+
         [HttpGet]
         public async Task<IActionResult> GetNews([FromQuery] GetNewsQuery query)
         {
@@ -43,7 +45,7 @@ namespace TrustyNews.Api.WebApi.Controllers
         }
         [HttpGet]
         [Route("MainPageNews")]
-        public async Task<IActionResult> GetMainPageNews(int page =1 , int pageSize= 10) 
+        public async Task<IActionResult> GetMainPageNews(int page = 1, int pageSize = 10)
         {
             var news = await mediator.Send(new GetMainPageNewsQuery(UserId, page, pageSize));
 
@@ -51,11 +53,11 @@ namespace TrustyNews.Api.WebApi.Controllers
         }
         [HttpGet]
         [Route("GetUserNews")]
-        public async Task<IActionResult> GetUserNews(Guid userId, string userName, int page = 1, int pageSize= 10)
+        public async Task<IActionResult> GetUserNews(Guid userId, string userName, int page = 1, int pageSize = 10)
         {
             var news = await mediator.Send(new GetUserNewsQuery(userId, userName, page, pageSize));
 
-            return Ok(news);    
+            return Ok(news);
         }
         [HttpGet]
         [Route("GetNewsComments/{newsId}")]
@@ -80,7 +82,7 @@ namespace TrustyNews.Api.WebApi.Controllers
         {
             var res = await mediator.Send(new SearchNewsBySubjectOrTagsQuery(searchText));
 
-            return Ok(res); 
+            return Ok(res);
         }
 
         [HttpPost]
@@ -161,7 +163,7 @@ namespace TrustyNews.Api.WebApi.Controllers
         {
             var res = await mediator.Send(new DeleteNewsCommentCommand(commentId));
 
-            return Ok(res); 
+            return Ok(res);
         }
     }
 }

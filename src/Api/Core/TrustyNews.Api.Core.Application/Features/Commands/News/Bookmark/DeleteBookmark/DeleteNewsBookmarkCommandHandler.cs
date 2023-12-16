@@ -8,30 +8,29 @@ using System.Threading.Tasks;
 using TrustyNews.Api.Core.Application.Interfaces.Repositories;
 using TrustyNews.Common.Exceptions;
 
-namespace TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.DeleteBookmark
+namespace TrustyNews.Api.Core.Application.Features.Commands.News.Bookmark.DeleteBookmark;
+
+public class DeleteNewsBookmarkCommandHandler : IRequestHandler<DeleteNewsBookmarkCommand, bool>
 {
-    public class DeleteNewsBookmarkCommandHandler : IRequestHandler<DeleteNewsBookmarkCommand, bool>
+    private readonly INewsBookmarkRepository newsBookmarkRepository;
+
+    public DeleteNewsBookmarkCommandHandler(INewsBookmarkRepository newsBookmarkRepository)
     {
-        private readonly INewsBookmarkRepository newsBookmarkRepository;
+        this.newsBookmarkRepository = newsBookmarkRepository;
+    }
+    public async Task<bool> Handle(DeleteNewsBookmarkCommand request, CancellationToken cancellationToken)
+    {
+        var existBookmarkQuery = newsBookmarkRepository.AsQueryable()
+                                .Where(i => i.NewsId == request.NewsId)
+                                .Where(i => i.CreatedById == request.CreatedById);
 
-        public DeleteNewsBookmarkCommandHandler(INewsBookmarkRepository newsBookmarkRepository)
-        {
-            this.newsBookmarkRepository = newsBookmarkRepository;
-        }
-        public async Task<bool> Handle(DeleteNewsBookmarkCommand request, CancellationToken cancellationToken)
-        {
-            var existBookmarkQuery = newsBookmarkRepository.AsQueryable()
-                                    .Where(i => i.NewsId == request.NewsId)
-                                    .Where(i => i.CreatedById == request.CreatedById);
+        var existBookmark = existBookmarkQuery.FirstOrDefault();
 
-            var existBookmark = existBookmarkQuery.FirstOrDefault();
+        if (existBookmark == null)
+            throw new DatabaseValidationException("Bookmarks not found!");
 
-            if (existBookmark == null)
-                throw new DatabaseValidationException("Bookmarks not found!");
+        var deletedRow = await newsBookmarkRepository.DeleteAsync(existBookmark);
 
-            var deletedRow = await newsBookmarkRepository.DeleteAsync(existBookmark);
-
-            return true;
-        }
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using TrustyNews.Api.Core.Application.Extensions;
 using TrustyNews.Api.Infrastructure.Persistence.Extensions;
+using TrustyNews.Api.WebApi.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.ConfigureExceptionHandling(app.Environment.IsDevelopment());
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
