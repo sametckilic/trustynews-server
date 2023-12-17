@@ -34,10 +34,19 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetNews
             }
 
             query = query.OrderBy(i => Guid.NewGuid())
+                          .Include(i => i.NewsCoverPhoto)
+                          .Include(i => i.NewsVotes)
                           .Take(request.Count);
 
-            return await query.ProjectTo<GetNewsViewModel>(mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
+            var list = await query.Select(i => new GetNewsViewModel()
+            {
+                Id = i.Id,
+                Subject = i.Subject,
+                NewsCoverPhotoBase = i.NewsCoverPhoto.PhotoBase,
+                VoteCount = i.NewsVotes.Count,
+            }).ToListAsync(cancellationToken);
+
+            return list;
         }
     }
 }

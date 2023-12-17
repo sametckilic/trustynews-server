@@ -10,7 +10,7 @@ namespace TrustyNews.Common.Models.Queries
     {
         public Guid Id { get; set; }
         public string Subject { get; set; }
-        public string NewsCoverPhotoId { get; set; }
+        public string NewsCoverPhotoBase { get; set; }
         public int VoteCount {  get; set; }
     }
 }
