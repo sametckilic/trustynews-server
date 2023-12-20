@@ -68,15 +68,7 @@ namespace TrustyNews.Api.WebApi.Controllers.News
             return Ok(comments);
         }
 
-
-
-
-
-
-
-
-
-        [HttpPost]
+        [HttpGet]
         [Route("Search/{searchText}")]
         public async Task<IActionResult> SearchBySubjectOrTag(string searchText)
         {
@@ -84,6 +76,11 @@ namespace TrustyNews.Api.WebApi.Controllers.News
 
             return Ok(res);
         }
+
+
+
+
+
 
         [HttpPost]
         [Route("Create")]
