@@ -52,6 +52,7 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
                 new Claim(ClaimTypes.Name, dbUser.UserName),
                 new Claim(ClaimTypes.GivenName, dbUser.FirstName),
                 new Claim(ClaimTypes.Surname, dbUser.LastName),
+                new Claim(ClaimTypes.Uri, dbUser.UserPhoto.PhotoBase)
 
             };
 
@@ -65,11 +66,10 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expiry = DateTime.Now.AddDays(10);
 
-            var token = new JwtSecurityToken(
-                                            claims: claims,
-                                            expires: expiry,
-                                            signingCredentials: creds,
-                                            notBefore: DateTime.Now);
+            var token = new JwtSecurityToken(claims: claims,
+                                             expires: expiry,
+                                             signingCredentials: creds,
+                                             notBefore: DateTime.Now);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
