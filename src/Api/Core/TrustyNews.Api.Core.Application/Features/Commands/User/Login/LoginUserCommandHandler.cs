@@ -19,11 +19,13 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
     public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
     {
         private readonly IUserRepository userRepository;
+        private readonly IUserPhotoRepository userPhotoRepository;
         private readonly IMapper mapper;
         private readonly IConfiguration configuration;
 
-        public LoginUserCommandHandler(IUserRepository userRepository, IMapper mapper, IConfiguration configuration)
+        public LoginUserCommandHandler(IUserRepository userRepository, IMapper mapper, IConfiguration configuration, IUserPhotoRepository userPhotoRepository)
         {
+            this.userPhotoRepository = userPhotoRepository;
             this.userRepository = userRepository;
             this.mapper = mapper;
             this.configuration = configuration;
@@ -43,17 +45,18 @@ namespace TrustyNews.Api.Core.Application.Features.Commands.User.Login
 
             // TODO email dogrulama yoksa girisi engelle!!!
 
+            var dbUserPhoto = userPhotoRepository.AsQueryable().Where(i => i.CreatedById == dbUser.Id).FirstOrDefault();
+            
             var result = mapper.Map<LoginUserViewModel>(dbUser);
 
             var claims = new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, dbUser.Id.ToString()),
-                new Claim(ClaimTypes.Email, dbUser.EmailAddress),
-                new Claim(ClaimTypes.Name, dbUser.UserName),
-                new Claim(ClaimTypes.GivenName, dbUser.FirstName),
-                new Claim(ClaimTypes.Surname, dbUser.LastName),
-                new Claim(ClaimTypes.Uri, dbUser.UserPhoto.PhotoBase)
-
+                new Claim("id", dbUser.Id.ToString()),
+                new Claim("emailAddress" , dbUser.EmailAddress),
+                new Claim("userName", dbUser.UserName),
+                new Claim("firstName", dbUser.FirstName),
+                new Claim("surName", dbUser.LastName),
+                new Claim("photoBase" , dbUserPhoto.PhotoBase)
             };
 
             result.Token = GenerateToken(claims);
