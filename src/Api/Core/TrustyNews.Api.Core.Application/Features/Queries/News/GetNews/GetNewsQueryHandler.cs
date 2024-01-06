@@ -35,7 +35,7 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetNews
 
             query = query.OrderBy(i => Guid.NewGuid())
                           .Include(i => i.NewsCoverPhoto)
-                          .Include(i => i.NewsVotes)
+                          .Include(i => i.NewsBookmarks)
                           .Take(request.Count);
 
             var list = await query.Select(i => new GetNewsViewModel()
@@ -43,7 +43,9 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetNews
                 Id = i.Id,
                 Subject = i.Subject,
                 NewsCoverPhotoBase = i.NewsCoverPhoto.PhotoBase,
-                VoteCount = i.NewsVotes.Count,
+                BookmarkedCount = i.NewsBookmarks.Count,
+                isBookmarked = request.UserId.HasValue && i.NewsBookmarks.Any(j => j.CreatedById == request.UserId) ? true : false,
+                CreatedDate = i.CreateDate
             }).ToListAsync(cancellationToken);
 
             return list;

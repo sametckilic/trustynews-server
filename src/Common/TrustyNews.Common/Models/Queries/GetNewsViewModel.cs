@@ -11,6 +11,8 @@ namespace TrustyNews.Common.Models.Queries
         public Guid Id { get; set; }
         public string Subject { get; set; }
         public string NewsCoverPhotoBase { get; set; }
-        public int VoteCount {  get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int BookmarkedCount {  get; set; }
+        public bool isBookmarked { get; set; }
     }
 }

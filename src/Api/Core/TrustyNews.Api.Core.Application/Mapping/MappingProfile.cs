@@ -36,7 +36,7 @@ namespace TrustyNews.Api.Core.Application.Mapping
             CreateMap<CreateNewsTagCommand, NewsTag>();
 
             CreateMap<News, GetNewsViewModel>()
-                .ForMember(x => x.VoteCount, y => y.MapFrom(z => z.NewsVotes.Count));
+                .ForMember(x => x.BookmarkedCount, y => y.MapFrom(z => z.NewsBookmarks.Count));
         }
     }
 }

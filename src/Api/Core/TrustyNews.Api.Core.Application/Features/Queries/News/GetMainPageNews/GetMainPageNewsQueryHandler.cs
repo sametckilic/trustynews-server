@@ -39,7 +39,7 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews
                 Id = i.Id,
                 Subject = i.Subject,
                 Content = i.Content,
-                IsBookmarked = request.UserId.HasValue && i.NewsBookmarks.Any(j => j.CreatedById == request.UserId),
+                IsBookmarked = request.UserId.HasValue && i.NewsBookmarks.Any(j => j.CreatedById == request.UserId) ? true : false,
                 CreatedDate = i.CreateDate,
                 NewsCoverPhotoBase = i.NewsCoverPhoto.PhotoBase,
                 VoteType = request.UserId.HasValue && i.NewsVotes.Any(j => j.CreatedById == request.UserId) ?
@@ -48,7 +48,7 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews
                 BookmarkedCount = i.NewsBookmarks.GroupBy(i => i.NewsId).Count(),
                 CreatedByUserName = i.CreatedBy.UserName
 
-            });
+            });;
 
             var entries = await list.GetPaged(request.Page, request.PageSize);
 
