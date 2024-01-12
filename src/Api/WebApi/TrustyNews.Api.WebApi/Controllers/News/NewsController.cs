@@ -45,7 +45,7 @@ namespace TrustyNews.Api.WebApi.Controllers.News
         }
         [HttpGet]
         [Route("MainPageNews")]
-        public async Task<IActionResult> GetMainPageNews(int page = 1, int pageSize = 10)
+        public async Task<IActionResult> GetMainPageNews(Guid? UserId, int page = 1, int pageSize = 10)
         {
             var news = await mediator.Send(new GetMainPageNewsQuery(UserId, page, pageSize));
 

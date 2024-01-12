@@ -18,9 +18,11 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews
     {
         private readonly INewsRepository newsRepository;
         private readonly IMapper mapper;
+        private readonly IUserPhotoRepository userPhotoRepository;
 
-        public GetMainPageNewsQueryHandler(INewsRepository newsRepository, IMapper mapper)
+        public GetMainPageNewsQueryHandler(INewsRepository newsRepository, IMapper mapper, IUserPhotoRepository userPhotoRepository)
         {
+            this.userPhotoRepository = userPhotoRepository;
             this.newsRepository = newsRepository;
             this.mapper = mapper;
         }
@@ -34,6 +36,7 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews
                          .Include(i => i.NewsVotes)
                          .Include(i => i.NewsCoverPhoto);
 
+
             var list = query.Select(i => new GetNewsDetailViewModel()
             {
                 Id = i.Id,
@@ -46,9 +49,11 @@ namespace TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews
                            i.NewsVotes.FirstOrDefault(j => j.CreatedById == request.UserId).VoteType :
                            VoteType.None,
                 BookmarkedCount = i.NewsBookmarks.GroupBy(i => i.NewsId).Count(),
-                CreatedByUserName = i.CreatedBy.UserName
+                CreatedByUserName = i.CreatedBy.UserName,
+                UserPhotoBase = userPhotoRepository.GetUserPhotoByUserName(i.CreatedBy.UserName).PhotoBase,
+                CreatedById = i.CreatedById,
 
-            });;
+            }) ;
 
             var entries = await list.GetPaged(request.Page, request.PageSize);
 

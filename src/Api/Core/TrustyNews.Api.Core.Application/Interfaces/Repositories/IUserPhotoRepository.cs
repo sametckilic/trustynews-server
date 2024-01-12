@@ -9,5 +9,6 @@ namespace TrustyNews.Api.Core.Application.Interfaces.Repositories
 {
     public interface IUserPhotoRepository : IGenericRepository<UserPhoto>
     {
+        public UserPhoto GetUserPhotoByUserName(string userName);
     }
 }

@@ -5,7 +5,8 @@ namespace TrustyNews.Api.WebApi.Controllers
 {
     public class BaseController : ControllerBase
     {
-        public Guid UserId => new(HttpContext.User.FindFirst("id")?.Value);
+        //public Guid UserId => new(HttpContext.User.FindFirst("id")?.Value);
+
 
     }
 }

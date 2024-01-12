@@ -10,10 +10,13 @@ namespace TrustyNews.Common.Models.Queries
     public class GetNewsDetailViewModel : BaseFooterRateBookmarkedViewModel
     {
         public Guid Id { get; set; }
+        public Guid CreatedById { get; set; }
         public string Subject {  get; set; }
         public string Content {  get; set; }
         public DateTime CreatedDate { get; set; }
         public string CreatedByUserName {  get; set; }
         public string NewsCoverPhotoBase { get; set; }
+        public string UserPhotoBase { get; set; }
+
     }
 }
