@@ -16,6 +16,7 @@ using TrustyNews.Api.Core.Application.Features.Commands.News.Vote.DeleteVote;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetMainPageNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetNewsComment;
+using TrustyNews.Api.Core.Application.Features.Queries.News.GetSingleNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.GetUserNews;
 using TrustyNews.Api.Core.Application.Features.Queries.News.SearchBySubjectOrTags;
 
@@ -77,6 +78,14 @@ namespace TrustyNews.Api.WebApi.Controllers.News
             return Ok(res);
         }
 
+        [HttpGet]
+        [Route("GetSingleNews/{newsId}")]
+        public async Task<IActionResult> GetSingleNews(Guid newsId, Guid? userId)
+        {
+            var res = await mediator.Send(new GetSingleNewsQuery(userId, newsId));
+
+            return Ok(res);
+        }
 
 
 
